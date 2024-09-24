@@ -6,6 +6,10 @@ on:
       - main
   workflow_dispatch:
 
+permissions:
+  id-token: write  # Dê permissão para gravar o token de ID
+  contents: read   # Permissão necessária para fazer checkout de código
+
 jobs:
   build:
     runs-on: windows-latest
@@ -50,6 +54,9 @@ jobs:
           client-id: ${{ secrets.AZUREAPPSERVICE_CLIENTID_9966D232C26B454AA17E3F899E7504DD }}
           tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_1CE7347D9B2B403ABFA90310B1F06A12 }}
           subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_C9E7B91BDCA7482C8199C68231A1BEAD }}
+          allow-no-subscriptions: true 
+          # Corrigir o tipo de autenticação
+          auth-type: id-token
 
       - name: Deploy to Azure Web App
         id: deploy-to-webapp
