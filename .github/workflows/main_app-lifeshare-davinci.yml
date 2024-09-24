@@ -51,8 +51,8 @@ jobs:
       - name: Login to Azure
         uses: azure/login@v2
         with:
-          client-id: ${{ secrets.AZUREAPPSERVICE_CLIENTID_9966D232C26B454AA17E3F899E7504DD }}
-          tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_1CE7347D9B2B403ABFA90310B1F06A12 }}
+          client-id: "693f4833-cfc0-4913-86f2-f159338b7477"
+          tenant-id: "11dbbfe2-89b8-4549-be10-cec364e59551"
           subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_C9E7B91BDCA7482C8199C68231A1BEAD }}
           allow-no-subscriptions: true 
           # Corrigir o tipo de autenticação
