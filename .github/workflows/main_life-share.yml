@@ -21,11 +21,14 @@ jobs:
         with:
           dotnet-version: '6.0.x'
 
+      - name: Set DOTNET_ROOT
+        run: echo "DOTNET_ROOT=${{runner.tool_cache}}/dncs" >> $GITHUB_ENV
+
       - name: Build with dotnet
-        run: dotnet build --configuration Release
+        run: dotnet build C:life-share\LifeShare\LifeShare.csproj --configuration Release
 
       - name: dotnet publish
-        run: dotnet publish -c Release -o ${{env.DOTNET_ROOT}}/myapp
+        run: dotnet publish C:life-share\LifeShare\LifeShare.csproj -c Release -o ${{env.DOTNET_ROOT}}/myapp
 
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v4
@@ -40,7 +43,7 @@ jobs:
       name: 'Production'
       url: ${{ steps.deploy-to-webapp.outputs.webapp-url }}
     permissions:
-      id-token: write #This is required for requesting the JWT
+      id-token: write # This is required for requesting the JWT
 
     steps:
       - name: Download artifact from build job
@@ -62,4 +65,3 @@ jobs:
           app-name: 'life-share'
           slot-name: 'Production'
           package: .
-          
