@@ -22,16 +22,16 @@ jobs:
           dotnet-version: '6.0.x'
 
       - name: Build with dotnet
-        run: dotnet build 'C:\Users\User\life-share\LifeShare\LifeShare.csproj' --configuration Release
+        run: dotnet build 'LifeShare/LifeShare.csproj' --configuration Release
 
       - name: dotnet publish
-        run: dotnet publish 'C:\Users\User\life-share\LifeShare\LifeShare.csproj' -c Release -o 'C:\Users\User\life-share\published'
+        run: dotnet publish 'LifeShare/LifeShare.csproj' -c Release -o './published'
 
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v4
         with:
           name: .net-app
-          path: 'C:\Users\User\life-share\published'
+          path: './published'
 
   deploy:
     runs-on: windows-latest
