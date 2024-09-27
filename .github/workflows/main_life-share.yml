@@ -25,10 +25,10 @@ jobs:
         run: echo "DOTNET_ROOT=${{runner.tool_cache}}/dncs" >> $GITHUB_ENV
 
       - name: Build with dotnet
-        run: dotnet build 'life-share\LifeShare\LifeShare.csproj' --configuration Release
+        run: dotnet build 'LifeShare\LifeShare.csproj' --configuration Release
 
       - name: dotnet publish
-        run: dotnet publish 'life-share\LifeShare\LifeShare.csproj' -c Release -o ${{env.DOTNET_ROOT}}/myapp
+        run: dotnet publish 'LifeShare\LifeShare.csproj' -c Release -o ${{env.DOTNET_ROOT}}/myapp
 
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v4
